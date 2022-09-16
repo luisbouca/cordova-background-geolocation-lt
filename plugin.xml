@@ -51,6 +51,26 @@
         <framework src="src/ios/TSLocationManager.framework" custom="true" />
         <source-file src="src/ios/CDVBackgroundGeolocation.m" />
         <header-file src="src/ios/CDVBackgroundGeolocation.h" />
+
+		<!-- background-geolocation -->
+        <preference name="LOCATION_ALWAYS_AND_WHEN_IN_USE_USAGE_DESCRIPTION" default="[CHANGEME] Background location tracking is required for our app so we can..." />
+		<config-file parent="NSLocationAlwaysAndWhenInUseUsageDescription" target="*-Info.plist">
+			<string>$LOCATION_ALWAYS_AND_WHEN_IN_USE_USAGE_DESCRIPTION</string>
+		</config-file>
+        <preference name="LOCATION_ALWAYS_USAGE_DESCRIPTION" default="[CHANGEME pre-iOS11.  No longer used with iOS 12] Background location tracking is required for our app so we can..." />
+		<config-file parent="NSLocationAlwaysUsageDescription" target="*-Info.plist">
+			<string>$LOCATION_ALWAYS_USAGE_DESCRIPTION</string>
+		</config-file>
+        <preference name="LOCATION_WHEN_IN_USE_USAGE_DESCRIPTION" default="[CHANGEME] Background location tracking is required for our app so we can..." />
+		<config-file parent="NSLocationWhenInUseUsageDescription" target="*-Info.plist">
+			<string>$LOCATION_WHEN_IN_USE_USAGE_DESCRIPTION</string>
+		</config-file>
+        <preference name="MOTION_USAGE_DESCRIPTION" default="[CHANGEME] Device motion updates help determine when the device is stationary so the app can save power by turning off location-updates" />
+		<config-file parent="NSMotionUsageDescription" target="*-Info.plist">
+			<string>$MOTION_USAGE_DESCRIPTION</string>
+		</config-file>
+		<!-- /background-geolocation -->
+
      </platform>
 
      <!-- android -->
@@ -79,6 +99,16 @@
                 <param name="android-package" value="com.transistorsoft.cordova.bggeo.CDVBackgroundGeolocation"/>
             </feature>
         </config-file>
+
+		<!-- background-geolocation -->
+        <preference name="LICENSE_KEY" default="[CHANGEME] LICESNSE KEY" />
+		  <config-file parent="/manifest/application" target="app/src/main/AndroidManifest.xml">
+			  <meta-data
+				android:name="com.transistorsoft.locationmanager.license_key"
+				android:value="$LICENSE_KEY" />
+		  </config-file>
+		  <!-- /background-geolocation -->
+
      </platform>
 
      <!-- Browser (mock) -->
